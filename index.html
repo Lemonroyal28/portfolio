@@ -80,18 +80,18 @@
     a:hover { color: var(--blue); }
 
     section {
-      padding: 64px 0;
+      padding: 48px 0;
     }
 
     /* ── Section titles ───────────────────────────────── */
     .section-title {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 48px;
+      color: #7e77ff;
+      margin-bottom: 40px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -179,10 +179,10 @@
 
     /* ── Hero ──────────────────────────────────────────── */
     #hero {
-      min-height: 100vh;
+      min-height: calc(100svh - 54px);
       display: flex;
       align-items: center;
-      padding-top: 54px;
+      padding-top: 20px;
       position: relative;
     }
 
@@ -190,12 +190,12 @@
     #hero::before {
       content: '';
       position: absolute;
-      top: 20%;
-      left: 50%;
+      top: 15%;
+      left: 70%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(108, 99, 255, 0.06) 0%, transparent 70%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(108, 99, 255, 0.07) 0%, rgba(59, 130, 246, 0.03) 40%, transparent 70%);
       pointer-events: none;
     }
 
@@ -211,14 +211,16 @@
     .hero-text { flex: 1; min-width: 0; }
 
     .hero-photo {
-      width: 320px;
-      height: 400px;
+      width: 260px;
+      height: 260px;
       flex-shrink: 0;
-      border-radius: 12px;
+      border-radius: 50%;
       object-fit: cover;
       object-position: center top;
-      border: 2px solid var(--border);
-      box-shadow: 0 0 60px rgba(108, 99, 255, 0.1);
+      border: 2px solid var(--border-light);
+      outline: 1px solid var(--accent-soft);
+      outline-offset: 4px;
+      box-shadow: 0 0 60px rgba(108, 99, 255, 0.12);
       order: -1;
       image-rendering: auto;
       -webkit-backface-visibility: hidden;
@@ -318,7 +320,7 @@
       top: 8px;
       bottom: 8px;
       width: 1px;
-      background: linear-gradient(180deg, var(--accent), var(--border), var(--border));
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent) 40%, var(--border) 70%, var(--border) 100%);
     }
 
     .timeline-entry {
@@ -332,13 +334,13 @@
     .timeline-entry::before {
       content: '';
       position: absolute;
-      left: -33px;
-      top: 8px;
-      width: 10px;
-      height: 10px;
+      left: -34px;
+      top: 7px;
+      width: 12px;
+      height: 12px;
       border: 2px solid var(--border-light);
       border-radius: 50%;
-      background: var(--bg);
+      background: var(--surface-2);
       z-index: 2;
     }
 
@@ -440,11 +442,11 @@
 
     .tag {
       padding: 4px 10px;
-      background: var(--accent-soft);
-      border: 1px solid rgba(108, 99, 255, 0.15);
+      background: rgba(108, 99, 255, 0.18);
+      border: 1px solid rgba(108, 99, 255, 0.35);
       border-radius: 4px;
       font-family: var(--font-mono);
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       font-weight: 400;
       color: var(--accent);
     }
@@ -489,23 +491,23 @@
 
     .pill {
       padding: 8px 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: rgba(108, 99, 255, 0.18);
+      border: 1px solid rgba(108, 99, 255, 0.35);
       border-radius: 6px;
       font-size: 0.82rem;
       font-weight: 500;
-      color: var(--text);
+      color: var(--accent);
       transition: border-color 0.2s, background 0.2s, transform 0.15s;
     }
 
     .pill:hover {
       border-color: var(--accent);
-      background: var(--accent-soft);
+      background: var(--accent-glow);
       transform: translateY(-1px);
     }
 
     .pill.highlight {
-      border-color: rgba(108, 99, 255, 0.3);
+      border-color: rgba(108, 99, 255, 0.45);
       color: var(--accent);
     }
 
@@ -716,6 +718,8 @@
     footer {
       padding: 64px 0 36px;
       text-align: center;
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(90deg, transparent, var(--border-light), var(--accent), var(--border-light), transparent) 1;
     }
 
     .footer-name {
@@ -771,10 +775,10 @@
 
       .nav-toggle { display: block; }
 
-      section { padding: 64px 0; }
+      section { padding: 40px 0; }
 
       .hero-content { flex-direction: column; text-align: center; gap: 32px; }
-      .hero-photo { width: 240px; height: 300px; order: -1; }
+      .hero-photo { width: 200px; height: 200px; order: -1; }
       .hero-name { font-size: clamp(2.5rem, 12vw, 4.5rem); letter-spacing: -1px; }
       .hero-links { justify-content: center; }
 
@@ -1020,13 +1024,13 @@
         <div class="lang-card reveal">
           <div class="lang-title">English</div>
           <div class="lang-sub">Native speaker</div>
-          <div class="lang-bar"><div class="lang-fill" style="width: 100%"></div></div>
+          <div class="lang-bar"><div class="lang-fill" style="width: 95%"></div></div>
         </div>
 
         <div class="lang-card reveal">
           <div class="lang-title">Tamil</div>
           <div class="lang-sub">Native speaker</div>
-          <div class="lang-bar"><div class="lang-fill" style="width: 100%"></div></div>
+          <div class="lang-bar"><div class="lang-fill" style="width: 95%"></div></div>
         </div>
 
         <div class="lang-card reveal">
