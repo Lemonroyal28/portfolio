@@ -13,7 +13,7 @@ export default function ProjectCard({ label, title, description, tags }: Project
       <p className="project-desc">{description}</p>
       <div className="project-tags">
         {tags.map((tag, index) => (
-          <span key={index} className="tag">
+          <span key={index} className="project-tag">
             {tag}
           </span>
         ))}
