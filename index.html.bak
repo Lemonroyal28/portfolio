@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivaan Satish — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:         #08090c;
+      --surface:    #111318;
+      --surface-2:  #181b23;
+      --text:       #e4e4e7;
+      --text-secondary: #8b8fa3;
+      --accent:     #6c63ff;
+      --accent-soft: rgba(108, 99, 255, 0.12);
+      --accent-glow: rgba(108, 99, 255, 0.25);
+      --blue:       #3b82f6;
+      --border:     #1e2130;
+      --border-light: #282c3e;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-mono:    'Space Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-heading);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    body {
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise texture overlay ────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Gradient accent bar ──────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--blue), var(--accent));
+      z-index: 1000;
+    }
+
+    /* ── Container ────────────────────────────────────── */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    a:hover { color: var(--blue); }
+
+    section {
+      padding: 48px 0;
+    }
+
+    /* ── Section titles ───────────────────────────────── */
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #7e77ff;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-title::before {
+      content: '//';
+      color: var(--border-light);
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* ── Scroll reveal ────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Navigation ───────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 2px;
+      left: 0; right: 0;
+      z-index: 999;
+      background: rgba(8, 9, 12, 0.8);
+      backdrop-filter: blur(16px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav ul li a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--accent);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* ── Hero ──────────────────────────────────────────── */
+    #hero {
+      min-height: calc(100svh - 54px);
+      display: flex;
+      align-items: center;
+      padding-top: 20px;
+      position: relative;
+    }
+
+    /* Subtle radial glow behind hero */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 70%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(108, 99, 255, 0.07) 0%, rgba(59, 130, 246, 0.03) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 56px;
+    }
+
+    .hero-text { flex: 1; min-width: 0; }
+
+    .hero-photo {
+      width: 260px;
+      height: 260px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2px solid var(--border-light);
+      outline: 1px solid var(--accent-soft);
+      outline-offset: 4px;
+      box-shadow: 0 0 60px rgba(108, 99, 255, 0.12);
+      order: -1;
+      image-rendering: auto;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -2px;
+      color: var(--text);
+    }
+
+    .hero-name .accent {
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-summary {
+      margin-top: 28px;
+      max-width: 560px;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .hero-links {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+
+    .hero-link:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero-link svg { opacity: 0.6; }
+    .hero-link:hover svg { opacity: 1; }
+
+    .hero-location {
+      margin-top: 48px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      color: var(--border-light);
+    }
+
+    /* ── Divider ──────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ── Timeline ──────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent) 40%, var(--border) 70%, var(--border) 100%);
+    }
+
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 56px;
+    }
+
+    .timeline-entry:last-child { margin-bottom: 0; }
+
+    /* Timeline dot */
+    .timeline-entry::before {
+      content: '';
+      position: absolute;
+      left: -34px;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--border-light);
+      border-radius: 50%;
+      background: var(--surface-2);
+      z-index: 2;
+    }
+
+    /* Current role dot pulsing */
+    .timeline-entry.now::before {
+      border-color: var(--accent);
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px var(--accent-soft); }
+      50% { box-shadow: 0 0 0 8px rgba(108, 99, 255, 0.08); }
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-now {
+      display: inline-block;
+      padding: 2px 8px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border-radius: 4px;
+    }
+
+    .timeline-role {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .timeline-company {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .company-logo {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      border-radius: 5px;
+      background: #fff;
+      padding: 2px;
+    }
+
+    .timeline-desc {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    .timeline-desc ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .timeline-desc li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .timeline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      background: rgba(108, 99, 255, 0.18);
+      border: 1px solid rgba(108, 99, 255, 0.35);
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .timeline-thesis {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: var(--surface);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .timeline-thesis span {
+      color: var(--accent);
+      font-weight: 500;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── Skills ────────────────────────────────────────── */
+    .skills-block { margin-bottom: 40px; }
+
+    .skills-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 8px 16px;
+      background: rgba(108, 99, 255, 0.18);
+      border: 1px solid rgba(108, 99, 255, 0.35);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+
+    .pill:hover {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .pill.highlight {
+      border-color: rgba(108, 99, 255, 0.45);
+      color: var(--accent);
+    }
+
+    /* ── Languages ─────────────────────────────────────── */
+    .lang-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .lang-card {
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .lang-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .lang-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .lang-sub {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .lang-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .lang-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--blue));
+    }
+
+    /* ── Extracurriculars ──────────────────────────────── */
+    .extras-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .extra-card {
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .extra-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .extra-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .extra-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    /* White/light logos on dark bg: give them a subtle bg */
+    .extra-logo.on-dark {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 3px;
+    }
+
+    .extra-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    a.extra-name:hover {
+      color: var(--accent);
+    }
+
+    .extra-years {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .extra-card ul {
+      list-style: none;
+    }
+
+    .extra-card li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .extra-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* ── Project cards ─────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .project-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* ── CTA ───────────────────────────────────────────── */
+    .cta {
+      text-align: center;
+      padding: 56px 0;
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .cta-btn:hover {
+      background: var(--blue);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* ── Footer ────────────────────────────────────────── */
+    footer {
+      padding: 64px 0 36px;
+      text-align: center;
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(90deg, transparent, var(--border-light), var(--accent), var(--border-light), transparent) 1;
+    }
+
+    .footer-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .footer-row a {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    .footer-row a:hover { color: var(--accent); }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: var(--border-light);
+    }
+
+    /* ── Mobile ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 54px;
+        left: 0; right: 0;
+        background: rgba(8, 9, 12, 0.97);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: center;
+        padding: 28px 0;
+        gap: 20px;
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-120%);
+        transition: transform 0.3s;
+      }
+
+      nav ul.open {
+        transform: translateY(0);
+      }
+
+      .nav-toggle { display: block; }
+
+      section { padding: 40px 0; }
+
+      .hero-content { flex-direction: column; text-align: center; gap: 32px; }
+      .hero-photo { width: 200px; height: 200px; order: -1; }
+      .hero-name { font-size: clamp(2.5rem, 12vw, 4.5rem); letter-spacing: -1px; }
+      .hero-links { justify-content: center; }
+
+      .hero-links { flex-direction: column; }
+      .hero-link { justify-content: center; }
+
+      .timeline { padding-left: 22px; }
+      .timeline-entry::before { left: -27px; width: 8px; height: 8px; }
+    }
+
+    /* ── Print ─────────────────────────────────────────── */
+    @media print {
+      body::before, body::after, nav { display: none; }
+      section { padding: 20px 0; break-inside: avoid; }
+      .reveal { opacity: 1; transform: none; }
+      html { font-size: 11px; color: #111; background: #fff; }
+      .hero-name { font-size: 2.5rem; color: #111; -webkit-text-fill-color: #111; }
+      .section-title { color: #333; }
+      a { color: #111; }
+      .pill, .tag { border-color: #ccc; color: #333; background: #f5f5f5; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ──────────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <div class="nav-logo"><span>S</span>S</div>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#languages">Languages</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#extras">Activities</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="hero-label">Engineer &middot; Developer &middot; Problem Solver</p>
+          <h1 class="hero-name">Shivaan<br><span class="accent">Satish</span></h1>
+          <p class="hero-summary">
+            Industrial engineer turned full-stack data engineer. I build data systems, automate workflows, and solve operational problems — from maritime compliance to AI-powered dashboards.
+          </p>
+          <div class="hero-links">
+            <a class="hero-link" href="mailto:shivaansat@gmail.com">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 8 10-8"/></svg>
+              shivaansat@gmail.com
+            </a>
+            <a class="hero-link" href="https://linkedin.com/in/shivaan-satish-6b8653221" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+          <p class="hero-location">53.2194&deg; N &middot; 6.5665&deg; E &mdash; Groningen, NL</p>
+        </div>
+        <img class="hero-photo" src="assets/profile.png" alt="Shivaan Satish">
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Experience ──────────────────────────────────── -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title reveal">Experience</h2>
+      <div class="timeline">
+
+        <!-- Cumlaude.AI — current -->
+        <div class="timeline-entry now reveal">
+          <div class="timeline-date">Jan 2026 — Present <span class="badge-now">NOW</span></div>
+          <div class="timeline-role">Junior Full Stack Engineer</div>
+          <div class="timeline-company">
+            <img class="company-logo" src="assets/cumlaude.jpeg" alt="Cumlaude.AI">
+            <a href="https://cumlaude.ai" target="_blank" rel="noopener">Cumlaude.AI</a>&nbsp;&mdash; Kampen, NL
+          </div>
+          <div class="timeline-desc">
+            <ul>
+              <li><strong>Data Architecture &amp; Engineering:</strong> Designing, implementing and maintaining data warehouse architectures, databases, ETL processes and data models using SQL, Azure Synapse, and Microsoft Fabric.</li>
+              <li><strong>AI-driven Data Visualisation:</strong> Building automated data processing pipelines and dynamic visual dashboards with AI-driven analytics using Power Automate and Power Apps.</li>
+              <li><strong>User Needs &amp; Solution Design:</strong> Identifying user requirements and translating them into tailored technical solutions that best fit the client's context.</li>
+              <li><strong>IT Infrastructure &amp; Cloud:</strong> Applying knowledge of networking, servers, and cloud platforms to manage, analyse, and deliver data effectively.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Azure Synapse</span>
+              <span class="tag">Microsoft Fabric</span>
+              <span class="tag">Power Automate</span>
+              <span class="tag">Power Apps</span>
+              <span class="tag">ETL</span>
+              <span class="tag">Data Vis</span>
+              <span class="tag">AI Analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Royal Wagenborg -->
+        <div class="timeline-entry reveal">
+          <div class="timeline-date">2022 — 2023</div>
+          <div class="timeline-role">Junior Project Engineer</div>
+          <div class="timeline-company">
+            <img class="company-logo" src="assets/wagenborg.png" alt="Royal Wagenborg">
+            <a href="https://www.wagenborg.com" target="_blank" rel="noopener">Royal Wagenborg</a>
+          </div>
+          <div class="timeline-desc">
+            <ul>
+              <li><strong>New Projects:</strong> Led MRV fuel reporting for vessels over 5000GT for the year 2022.</li>
+              <li><strong>Hazardous Materials:</strong> Introduced protocols for tracking, handling, and disposal of hazardous materials on board ships throughout their life cycle.</li>
+              <li><strong>Digital Solutions:</strong> Collaborated with leading companies on digitalised tracking solutions and created a framework for in-house tracking software development.</li>
+              <li><strong>Environmental Reporting:</strong> Developed environmental consumption reports for submission to the IMO.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- S&B Machine Works -->
+        <div class="timeline-entry reveal">
+          <div class="timeline-date">2021 — 2022</div>
+          <div class="timeline-role">Production Planning Consultant</div>
+          <div class="timeline-company">
+            <img class="company-logo" src="assets/sb-machine.png" alt="S&amp;B Machine Works" style="background: transparent; padding: 0;" onerror="this.style.display='none'">
+            S&amp;B Machine Works (Partnership)
+          </div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Developed and optimised production schedules for high-precision CNC machining operations, ensuring efficient resource allocation, minimal downtime, and on-time delivery. Implemented process improvements to enhance throughput, reduce lead times, and maintain quality standards.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Education ───────────────────────────────────── -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title reveal">Education</h2>
+      <div class="timeline">
+
+        <div class="timeline-entry reveal">
+          <div class="timeline-date">2024 — Feb 2026</div>
+          <div class="timeline-role">MSc Technology &amp; Operations Management</div>
+          <div class="timeline-company">
+            <img class="company-logo" src="assets/rug.png" alt="University of Groningen">
+            University of Groningen
+          </div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Focus area: Smart Industry Operations and Development</li>
+            </ul>
+            <div class="timeline-thesis">
+              <span>Thesis</span><br>
+              An Integrated Digital Twin and Machine Learning Framework for Carbon Emission Reduction in Industrial Processes
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-entry reveal">
+          <div class="timeline-date">2019 — 2024</div>
+          <div class="timeline-role">BSc Industrial Engineering &amp; Management</div>
+          <div class="timeline-company">
+            <img class="company-logo" src="assets/rug.png" alt="University of Groningen">
+            University of Groningen
+          </div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Specialisation in Production Technology and Logistics</li>
+              <li>Minor in Entrepreneurship and Digital Transformation</li>
+            </ul>
+            <div class="timeline-thesis">
+              <span>Thesis</span><br>
+              Unlocking Hydrogen's Potential for Reliable Energy Storage
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Skills ──────────────────────────────────────── -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title reveal">Skills</h2>
+
+      <div class="skills-block reveal">
+        <div class="skills-label">Technical</div>
+        <div class="pills">
+          <span class="pill highlight">Python</span>
+          <span class="pill highlight">SQL</span>
+          <span class="pill highlight">Matlab</span>
+          <span class="pill highlight">R-Programming</span>
+          <span class="pill highlight">Jupyter</span>
+          <span class="pill highlight">Azure Synapse</span>
+          <span class="pill highlight">Microsoft Fabric</span>
+          <span class="pill highlight">Power Automate</span>
+          <span class="pill highlight">Power Apps</span>
+          <span class="pill highlight">Microsoft Office</span>
+          <span class="pill highlight">CAD</span>
+          <span class="pill highlight">Vensim</span>
+        </div>
+      </div>
+
+      <div class="skills-block reveal">
+        <div class="skills-label">Methodologies &amp; Frameworks</div>
+        <div class="pills">
+          <span class="pill">Agile / Scrum</span>
+          <span class="pill">Lean Manufacturing</span>
+          <span class="pill">ETL Design</span>
+          <span class="pill">Data Modelling</span>
+          <span class="pill">Systems Thinking</span>
+          <span class="pill">Process Optimisation</span>
+          <span class="pill">Digital Twin Modelling</span>
+          <span class="pill">Project Management</span>
+          <span class="pill">Stakeholder Analysis</span>
+          <span class="pill">Consulting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Languages ───────────────────────────────────── -->
+  <section id="languages">
+    <div class="container">
+      <h2 class="section-title reveal">Languages</h2>
+      <div class="lang-row">
+
+        <div class="lang-card reveal">
+          <div class="lang-title">English</div>
+          <div class="lang-sub">Native speaker</div>
+          <div class="lang-bar"><div class="lang-fill" style="width: 95%"></div></div>
+        </div>
+
+        <div class="lang-card reveal">
+          <div class="lang-title">Tamil</div>
+          <div class="lang-sub">Native speaker</div>
+          <div class="lang-bar"><div class="lang-fill" style="width: 95%"></div></div>
+        </div>
+
+        <div class="lang-card reveal">
+          <div class="lang-title">Dutch</div>
+          <div class="lang-sub">Conversational</div>
+          <div class="lang-bar"><div class="lang-fill" style="width: 40%"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Extracurriculars ────────────────────────────── -->
+  <section id="extras">
+    <div class="container">
+      <h2 class="section-title reveal">Extracurriculars</h2>
+      <div class="extras-grid">
+
+        <div class="extra-card reveal">
+          <div class="extra-header">
+            <img class="extra-logo" src="assets/mamio.png" alt="V.V. Mamio">
+            <a href="https://vvmamiogroningen.nl" target="_blank" rel="noopener" class="extra-name">V.V. Mamio</a>
+          </div>
+          <div class="extra-years">2020 — Present</div>
+          <ul>
+            <li>Player from 2020 to present</li>
+            <li>Secretary of the club (2023–2024)</li>
+            <li>Social Media Manager (2022–Present)</li>
+            <li>Team coach and manager (2023–Present)</li>
+          </ul>
+        </div>
+
+        <div class="extra-card reveal">
+          <div class="extra-header">
+            <img class="extra-logo on-dark" src="assets/footy.webp" alt="FOOTY">
+            <a href="https://www.footy.nl/en/groningen-deparrel/" target="_blank" rel="noopener" class="extra-name">FOOTY</a>
+          </div>
+          <div class="extra-years">2022 — 2025</div>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 10px; font-style: italic;">Recreational small-sided football league in Groningen</p>
+          <ul>
+            <li>Referee and coordinator — enforcing rules within established standards, ensuring player safety, promoting fair play, communicating with players and coaches, and reporting incidents and match outcomes</li>
+          </ul>
+        </div>
+
+        <div class="extra-card reveal">
+          <div class="extra-header">
+            <img class="extra-logo" src="assets/ballie.png" alt="BALLIE">
+            <a href="https://ballie.nl" target="_blank" rel="noopener" class="extra-name">BALLIE</a>
+          </div>
+          <div class="extra-years">2025 — Present</div>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 10px; font-style: italic;">7v7 football competition platform with 1000+ weekly participants across NL</p>
+          <ul>
+            <li>Referee and coordinator — enforcing rules within established standards, ensuring player safety, promoting fair play, communicating with players and coaches, and reporting incidents and match outcomes</li>
+            <li>Acquisitions liaison</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Projects ────────────────────────────────────── -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title reveal">Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-label">MSc Thesis</div>
+          <div class="project-title">Digital Twin &amp; ML Framework for Carbon Emission Reduction</div>
+          <div class="project-desc">
+            Developed an integrated digital twin and machine learning framework targeting carbon emission reduction in industrial processes. Combined simulation modelling with predictive analytics to identify optimisation opportunities in real-world production environments.
+          </div>
+          <div class="timeline-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Digital Twin</span>
+            <span class="tag">Simulation</span>
+            <span class="tag">Industrial Processes</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-label">Cumlaude.AI</div>
+          <div class="project-title">AI-Powered Data Dashboards &amp; Automated Pipelines</div>
+          <div class="project-desc">
+            Designed and built end-to-end data pipelines and dynamic visual dashboards for clients, integrating multiple data sources with AI-driven analytics. Automated reporting workflows that reduced manual processing and improved data-driven decision making.
+          </div>
+          <div class="timeline-tags">
+            <span class="tag">SQL</span>
+            <span class="tag">Azure Synapse</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Power Automate</span>
+            <span class="tag">ETL</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-label">Royal Wagenborg</div>
+          <div class="project-title">Hazardous Materials Tracking &amp; Digital Framework</div>
+          <div class="project-desc">
+            Introduced protocols for tracking, handling, and disposal of hazardous materials on board ships throughout their life cycle. Collaborated with leading companies on digitalised tracking solutions and created a framework for in-house tracking software development.
+          </div>
+          <div class="timeline-tags">
+            <span class="tag">Maritime Compliance</span>
+            <span class="tag">Process Design</span>
+            <span class="tag">Software Framework</span>
+            <span class="tag">Hazmat Protocols</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-label">BSc Thesis</div>
+          <div class="project-title">Unlocking Hydrogen's Potential for Reliable Energy Storage</div>
+          <div class="project-desc">
+            Researched and modelled hydrogen-based energy storage solutions, evaluating technical feasibility and economic viability as a pathway toward reliable renewable energy infrastructure.
+          </div>
+          <div class="timeline-tags">
+            <span class="tag">Energy Systems</span>
+            <span class="tag">Modelling</span>
+            <span class="tag">Hydrogen</span>
+            <span class="tag">Matlab</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── CTA ─────────────────────────────────────────── -->
+  <div class="cta">
+    <div class="container">
+      <p class="cta-text reveal">Open to opportunities in data engineering and operations — let's connect.</p>
+      <a class="cta-btn reveal" href="mailto:shivaansat@gmail.com">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 8 10-8"/></svg>
+        Get in touch
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Footer ──────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-name">Shivaan Satish</div>
+      <div class="footer-row">
+        <a href="mailto:shivaansat@gmail.com">shivaansat@gmail.com</a>
+        <a href="https://linkedin.com/in/shivaan-satish-6b8653221" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="footer-copy">Groningen, NL</div>
+    </div>
+  </footer>
+
+  <!-- ── Vercel Analytics ──────────────────────────────── -->
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- ── JS ──────────────────────────────────────────── -->
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Active nav
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // Mobile menu
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('nav ul');
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+    navLinks.forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  </script>
+
+</body>
+</html>
