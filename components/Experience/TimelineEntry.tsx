@@ -35,7 +35,7 @@ export default function TimelineEntry({
       </div>
       <div className="timeline-role">{role}</div>
       <div className="timeline-company">
-        {logo && (
+        {logo && logo.trim() !== '' ? (
           <Image
             className="company-logo"
             src={logo}
@@ -43,6 +43,10 @@ export default function TimelineEntry({
             width={26}
             height={26}
           />
+        ) : (
+          <div className="company-logo-placeholder">
+            {company.substring(0, 2).toUpperCase()}
+          </div>
         )}
         {companyUrl ? (
           <a href={companyUrl} target="_blank" rel="noopener noreferrer">

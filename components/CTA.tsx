@@ -4,9 +4,9 @@ export default function CTA() {
   return (
     <section id="contact" className="cta-section">
       <div className="container">
-        <h2 className="cta-title">Get in Touch</h2>
+        <h2 className="cta-title">Let's Build Something</h2>
         <p className="cta-subtitle">
-          Open to opportunities in full-stack development, data engineering, and automation.
+          Interested in building scalable systems, AI workflows, or operational tooling?
         </p>
         <div className="cta-buttons">
           <a className="cta-button primary" href={`mailto:${profile.email}`}>
