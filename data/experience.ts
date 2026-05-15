@@ -6,6 +6,7 @@ export interface Experience {
   logo: string;
   description: string;
   bulletPoints: string[];
+  techStack?: string[];
 }
 
 export const experience: Experience[] = [
