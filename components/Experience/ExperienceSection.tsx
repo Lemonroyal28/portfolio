@@ -18,6 +18,7 @@ export default function ExperienceSection() {
               logo={exp.logo}
               description={exp.description}
               bulletPoints={exp.bulletPoints}
+              techStack={exp.techStack}
             />
           ))}
         </div>
