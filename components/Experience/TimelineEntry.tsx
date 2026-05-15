@@ -12,6 +12,7 @@ interface TimelineEntryProps {
   bulletPoints?: string[];
   tags?: string[];
   thesis?: string;
+  techStack?: string[];
 }
 
 export default function TimelineEntry({
@@ -26,6 +27,7 @@ export default function TimelineEntry({
   bulletPoints,
   tags,
   thesis,
+  techStack,
 }: TimelineEntryProps) {
   return (
     <div className={`timeline-entry ${isNow ? 'now' : ''}`}>
@@ -69,6 +71,15 @@ export default function TimelineEntry({
               <li key={index}>{point}</li>
             ))}
           </ul>
+        </div>
+      )}
+      {techStack && techStack.length > 0 && (
+        <div className="timeline-tech-stack">
+          {techStack.map((tech, index) => (
+            <span key={index} className="tech-badge">
+              {tech}
+            </span>
+          ))}
         </div>
       )}
       {tags && tags.length > 0 && (
