@@ -50,10 +50,13 @@ export const experience: Experience[] = [
     role: 'Production Planning Consultant',
     company: 'S&B Machine Works',
     logo: '',
-    description: 'Developed production planning processes, operational workflows, and process documentation for machine shop operations.',
+    description: 'Developed production planning processes and operational workflows for high-precision CNC machining operations, focusing on scheduling optimization and process improvements.',
     bulletPoints: [
-      'Designed operational procedures and workflow documentation for production planning',
-      'Optimized production scheduling and resource allocation',
+      'Developed and optimized production schedules for high-precision CNC machining operations',
+      'Ensured efficient resource allocation, minimal downtime, and on-time delivery across machining projects',
+      'Implemented process improvements to enhance throughput and reduce lead times',
+      'Maintained quality standards while optimizing production efficiency',
+      'Created operational procedures and workflow documentation for production planning',
     ],
   },
 ];
