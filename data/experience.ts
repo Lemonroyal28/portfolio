@@ -35,11 +35,14 @@ export const experience: Experience[] = [
     company: 'Royal Wagenborg',
     companyUrl: 'https://www.wagenborg.com',
     logo: '/assets/wagenborg.png',
-    description: 'Led digitalisation initiatives for maritime compliance processes and operational efficiency improvements in ship management.',
+    description: 'Led digitalization and compliance initiatives across maritime operations, focusing on environmental reporting, hazardous materials management, and software framework development.',
     bulletPoints: [
-      'Introduced protocols for tracking, handling, and disposal of hazardous materials throughout their life cycle on board ships',
-      'Collaborated with industry leaders to evaluate and implement digitalised tracking solutions',
-      'Created a framework for in-house software development to manage hazardous materials compliance',
+      'Executed MRV (Monitoring, Reporting, Verification) fuel reporting for vessels over 5,000 GT for the 2022 reporting year',
+      'Created environmental consumption reports for submission to the International Maritime Organisation (IMO)',
+      'Collaborated with leading companies to evaluate and implement digitalized tracking solutions for hazardous materials management',
+      'Introduced protocols for tracking, handling, and disposal of hazardous materials on board ships throughout their life cycle',
+      'Created a technical framework for in-house development of hazardous materials tracking software',
+      'Established standardized processes for maritime compliance and operational efficiency improvements',
     ],
   },
   {
