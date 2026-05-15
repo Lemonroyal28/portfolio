@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Refine experience section content with more detailed descriptions and project-focused organization for Royal Wagenborg and S&B Machine Works roles.
+**Goal:** Refine experience section content with comprehensive descriptions and detailed responsibilities for all three roles, with project-focused organization for Royal Wagenborg and S&B Machine Works.
 
-**Approach:** Project-first emphasis that organizes work by deliverables rather than organizational structure, expanding bullet points from 3-4 to 5-6 per role to capture full scope of responsibilities.
+**Approach:** Provide detailed, technical descriptions that emphasize deliverables, technologies, and scope of work. CUMLAUDE.AI receives expanded content to reflect current role depth, while Royal Wagenborg and S&B are organized by project type and operational focus respectively.
 
 **Files Modified:** `data/experience.ts`
 
@@ -15,7 +15,7 @@
 ### Overview
 
 The experience section will maintain 3 entries in chronological order:
-1. **CUMLAUDE.AI** - Junior Full Stack Engineer (Jan 2026 — Present) - *unchanged*
+1. **CUMLAUDE.AI** - Junior Full Stack Engineer (Jan 2026 — Present) - *expanded with comprehensive technical description and 10 detailed responsibilities*
 2. **Royal Wagenborg** - Junior Project Engineer (2022 — 2023) - *reorganized by project type*
 3. **S&B Machine Works** - Production Planning Consultant (2021) - *expanded with detailed CNC operations*
 
@@ -63,10 +63,30 @@ Developed production planning processes and operational workflows for high-preci
 
 ### CUMLAUDE.AI Entry
 
-**No changes** - keep existing content as is:
-- Role: Junior Full Stack Engineer
-- Dates: Jan 2026 — Present
-- Current description and 4 bullet points remain unchanged
+**Role:** Junior Full Stack Engineer
+**Company:** CUMLAUDE.AI
+**Dates:** Jan 2026 — Present
+**Company URL:** https://cumlaude.ai
+**Logo:** /assets/cumlaude.jpeg
+
+**Description:**
+At CUMLAUDE.AI, I work on the development and improvement of secure, data-driven SaaS platforms for companies that need automation, AI-enabled workflows, and scalable digital solutions. My role combines full-stack development, backend logic, authentication, database interaction, API integrations, and platform security.
+
+I contribute to building systems that transform raw data and business requirements into automated, visual, and actionable software solutions. This includes working with modern web technologies, improving the existing application stack, integrating external services through APIs and SDKs, and supporting secure multi-tenant platform architecture.
+
+My work focuses on creating maintainable, type-safe, and production-ready software using technologies such as Next.js, React, TypeScript, Supabase, PostgreSQL, Vercel AI SDK, Anthropic Claude, Cohere, Inngest, Upstash Redis, Zod, TanStack Query, Zustand, and Tailwind CSS.
+
+**Bullet Points (10 total):**
+1. Develop and improve SaaS platforms for companies requiring automation, AI-enabled workflows, and secure digital solutions
+2. Contribute to frontend and backend development using Next.js, React, TypeScript, Supabase, and modern full-stack tools
+3. Work on authentication, authorization, database access, and secure multi-tenant application patterns
+4. Integrate APIs, SDKs, and external software services to extend platform functionality and improve client solutions
+5. Support AI-enabled features such as streaming chat, retrieval-augmented generation, tool calling, semantic search, and automated workflows
+6. Help transform raw data into structured, visual, and actionable insights for users and client organizations
+7. Contribute to backend logic, protected server actions, API routes, webhooks, and background workflows
+8. Support security-focused development through validation, access control, audit logging, rate limiting, and safe handling of application data
+9. Work with reusable components, structured data layers, type-safe schemas, and maintainable application architecture
+10. Continuously improve the platform stack by evaluating available software tools and incorporating suitable technologies into delivered solutions
 
 ---
 
@@ -81,8 +101,9 @@ Developed production planning processes and operational workflows for high-preci
 
 ## Success Criteria
 
+- CUMLAUDE.AI entry expanded with comprehensive 3-paragraph description and 10 detailed responsibility bullets
 - Royal Wagenborg entry reorganized with 6 bullets covering all three project areas
 - S&B Machine Works entry expanded to 5 bullets with CNC machining detail
-- CUMLAUDE.AI entry remains unchanged
 - All entries maintain consistent formatting and professional tone
 - Content accurately reflects the scope and impact of work performed
+- Technical terminology and tools are accurately represented
