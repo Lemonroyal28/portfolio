@@ -1218,3 +1218,256 @@ nav ul li a.active::after {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  /* ==========================================
+     COLOR SCHEME TRANSFORMATION
+     ========================================== */
+
+  :root {
+    --bg: #ffffff;
+    --surface: #f8f9fa;
+    --text: #111111;
+    --text-secondary: #444444;
+    --border: #dddddd;
+    --accent: #6c63ff;
+  }
+
+  body {
+    background: white !important;
+    color: #111 !important;
+  }
+
+  /* ==========================================
+     HIDE DECORATIVE ELEMENTS
+     ========================================== */
+
+  /* Remove noise texture overlay */
+  body::before {
+    display: none !important;
+  }
+
+  /* Remove gradient accent bar */
+  body::after {
+    display: none !important;
+  }
+
+  /* Remove backdrop blur effects */
+  .navbar,
+  [style*="backdrop-filter"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Remove all glow effects */
+  .glow,
+  [class*="glow"],
+  [class*="-glow"] {
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  /* ==========================================
+     DISABLE ANIMATIONS
+     ========================================== */
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Remove pulsing effect */
+  .pulse {
+    animation: none !important;
+  }
+
+  /* Remove hover effects */
+  *:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* ==========================================
+     LAYOUT OPTIMIZATIONS
+     ========================================== */
+
+  /* Remove fixed positioning from navbar */
+  .navbar {
+    position: static !important;
+    box-shadow: none !important;
+  }
+
+  /* Optimize page breaks */
+  .timeline-entry,
+  .project-card,
+  .extra-card,
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Ensure proper spacing */
+  .container {
+    max-width: 100%;
+    padding: 0 40px;
+  }
+
+  /* ==========================================
+     TYPOGRAPHY & CONTRAST
+     ========================================== */
+
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 24pt;
+    color: #111;
+  }
+
+  h2 {
+    font-size: 18pt;
+    color: #111;
+  }
+
+  h3 {
+    font-size: 14pt;
+    color: #111;
+  }
+
+  p,
+  li,
+  span {
+    color: #111;
+  }
+
+  /* Ensure links are visible and readable */
+  a {
+    color: #111 !important;
+    text-decoration: underline;
+  }
+
+  /* ==========================================
+     COMPONENT-SPECIFIC ADJUSTMENTS
+     ========================================== */
+
+  /* Cards and surfaces */
+  .card,
+  .project-card,
+  .extra-card,
+  .timeline-entry,
+  .stack-section {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+
+  /* Pills and badges */
+  .pill,
+  .tech-pill,
+  .stack-badge,
+  .skill-pill {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    border: 1px solid #ccc !important;
+  }
+
+  /* Timeline */
+  .timeline-line {
+    background: #ddd !important;
+  }
+
+  .timeline-dot {
+    background: white !important;
+    border-color: #666 !important;
+  }
+
+  /* Hero section */
+  .hero-photo {
+    border-color: #ddd !important;
+    box-shadow: none !important;
+  }
+
+  .hero-name {
+    color: #111 !important;
+  }
+
+  .accent {
+    color: #6c63ff !important;
+  }
+
+  /* Dividers */
+  .divider {
+    background: #ddd !important;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid #ddd !important;
+    background: white !important;
+  }
+
+  /* Hide interactive buttons that don't make sense in print */
+  .hero-cta-buttons button,
+  .hero-cta-buttons a[href^="mailto"],
+  .cta-section {
+    display: none !important;
+  }
+
+  /* Keep LinkedIn link visible but hide mailto */
+  .hero-cta-buttons a[href*="linkedin"] {
+    display: inline-flex !important;
+    pointer-events: none;
+  }
+
+  /* Show location and contact info */
+  .hero-location {
+    color: #666 !important;
+  }
+
+  /* Stack badges in hero */
+  .hero-stack-badges .stack-badge {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    border: 1px solid #ccc !important;
+  }
+
+  /* ==========================================
+     PAGE LAYOUT
+     ========================================== */
+
+  @page {
+    margin: 0.5in;
+    size: letter;
+  }
+
+  /* Ensure content doesn't overflow pages */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* ==========================================
+     ACCESSIBILITY & READABILITY
+     ========================================== */
+
+  /* Ensure sufficient contrast */
+  .text-secondary,
+  .hero-summary,
+  .timeline-entry p {
+    color: #444 !important;
+  }
+
+  /* Make sure all text is readable */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
