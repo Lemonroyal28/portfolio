@@ -1483,6 +1483,24 @@ nav ul li a.active::after {
     border: 0.5pt solid #ddd !important;
   }
 
+  /* Multi-column layout for Education section only */
+  #education .timeline {
+    column-count: 2 !important;
+    column-gap: 12pt !important;
+  }
+
+  #education .timeline::before {
+    display: none !important; /* Hide timeline line in multi-column */
+  }
+
+  #education .timeline-entry {
+    break-inside: avoid !important;
+  }
+
+  #education .timeline-entry::before {
+    display: none !important; /* Hide timeline dots in multi-column */
+  }
+
   .timeline-entry::before {
     left: -20pt !important;
     top: 4pt !important;
@@ -1567,8 +1585,14 @@ nav ul li a.active::after {
   }
 
   /* ==========================================
-     SKILLS - COMPRESSED
+     SKILLS - COMPRESSED WITH MULTI-COLUMN
      ========================================== */
+
+  /* Multi-column layout for skills section */
+  #skills .container {
+    column-count: 2 !important;
+    column-gap: 12pt !important;
+  }
 
   .skills-block {
     margin-bottom: 8pt !important;
@@ -1597,20 +1621,27 @@ nav ul li a.active::after {
 
   .skill-group {
     margin-bottom: 8pt !important;
+    break-inside: avoid !important;
   }
 
   /* ==========================================
-     PROJECTS - COMPRESSED
+     PROJECTS - COMPRESSED WITH MULTI-COLUMN
      ========================================== */
 
+  /* Multi-column layout for projects section */
   .projects-grid {
     gap: 8pt !important;
+    column-count: 2 !important;
+    column-gap: 12pt !important;
+    display: block !important; /* Override grid for print */
   }
 
   .project-card {
     padding: 6pt !important;
     background: white !important;
     border: 0.5pt solid #ddd !important;
+    break-inside: avoid !important;
+    margin-bottom: 8pt !important;
   }
 
   .project-label {
@@ -1645,17 +1676,25 @@ nav ul li a.active::after {
   }
 
   /* ==========================================
-     EXTRACURRICULARS - COMPRESSED
+     EXTRACURRICULARS - COMPRESSED WITH MULTI-COLUMN
      ========================================== */
 
-  .extras-grid {
+  /* Multi-column layout for activities section */
+  .extras-grid,
+  .activities-grid {
     gap: 8pt !important;
+    column-count: 2 !important;
+    column-gap: 12pt !important;
+    display: block !important; /* Override grid for print */
   }
 
-  .extra-card {
+  .extra-card,
+  .activity-card {
     padding: 6pt !important;
     background: white !important;
     border: 0.5pt solid #ddd !important;
+    break-inside: avoid !important;
+    margin-bottom: 8pt !important;
   }
 
   .extra-header {
