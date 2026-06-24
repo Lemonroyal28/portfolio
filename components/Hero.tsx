@@ -29,6 +29,14 @@ export default function Hero() {
               >
                 View LinkedIn
               </a>
+              <a
+                href="/Shivaan-Satish-CV.pdf"
+                download="Shivaan-Satish-CV.pdf"
+                className="cta-button secondary"
+                aria-label="Download CV as PDF"
+              >
+                Download CV
+              </a>
             </div>
 
             <div className="hero-stack-badges">
