@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { profile } from '@/data/profile';
 
@@ -29,14 +31,13 @@ export default function Hero() {
               >
                 View LinkedIn
               </a>
-              <a
-                href="/Shivaan-Satish-CV.pdf"
-                download="Shivaan-Satish-CV.pdf"
+              <button
+                onClick={() => window.print()}
                 className="cta-button secondary"
-                aria-label="Download CV as PDF"
+                aria-label="Print portfolio as PDF"
               >
                 Download CV
-              </a>
+              </button>
             </div>
 
             <div className="hero-stack-badges">
