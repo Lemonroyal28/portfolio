@@ -14,9 +14,9 @@ export const projects: Project[] = [
   },
   {
     label: 'Cumlaude.AI',
-    title: 'AI-Powered Data Dashboards & Automated Pipelines',
-    description: 'Designed and built end-to-end data pipelines and dynamic visual dashboards for clients, integrating multiple data sources with AI-driven analytics. Automated reporting workflows that reduced manual processing and improved data-driven decision making.',
-    tags: ['SQL', 'Azure Synapse', 'Power BI', 'Power Automate', 'ETL'],
+    title: 'AI-Powered SaaS Platforms & Automation Systems',
+    description: 'Built full-stack SaaS platforms with AI-driven automation, integrating multiple data sources and intelligent workflows. Developed end-to-end solutions with real-time dashboards, automated pipelines, and AI-enhanced decision making for client applications.',
+    tags: ['Next.js', 'React', 'TypeScript', 'Node.js', 'Supabase', 'PostgreSQL', 'Vercel', 'ETL'],
   },
   {
     label: 'Royal Wagenborg',
