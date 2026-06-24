@@ -32,16 +32,17 @@ Shivaan's contract with CUMLAUDE ends August 19, 2026. The portfolio needs to su
 
 **File:** `components/Hero.tsx`
 
-Modify the contact links section to add a third link for PDF download:
-- Existing: Email link, LinkedIn link
-- New: Download CV link
+Modify the CTA buttons section (`hero-cta-buttons` div) to add a third button for PDF download:
+- Existing: "Contact Me" button (primary), "View LinkedIn" button (secondary)
+- New: "Download CV" button (secondary)
 
 Implementation approach:
 - Use standard HTML `<a>` tag with `download` attribute
 - `href="/Shivaan-Satish-CV.pdf"`
 - `download="Shivaan-Satish-CV.pdf"` attribute
-- Include download icon (matching existing icon style)
+- Class: `cta-button secondary`
 - Text: "Download CV"
+- Optional: Small download SVG icon before text (14x14px, similar to location icon style)
 
 ### File Placement
 
@@ -51,14 +52,15 @@ The PDF file will be placed in the public directory, making it accessible at the
 
 ### Styling
 
-The download link will reuse existing contact link styles:
-- Same CSS classes as email and LinkedIn links
-- Same font family, size, weight, and color
-- Same hover transition effect (color shift to accent purple)
-- Same spacing and layout
-- Download icon matches existing icon styling
+The download button will use existing CTA button styles:
+- Class: `cta-button secondary`
+- Matches the "View LinkedIn" button styling
+- Transparent background with border
+- Hover effect: background changes to surface color, border becomes accent purple, slight upward translation
+- Same font family (inherit), size (15px), weight, and padding (12px 24px)
+- Same spacing and layout within `hero-cta-buttons` flex container
 
-No new CSS required - existing `.hero-links` and related styles will be applied.
+No new CSS required - existing `.cta-button` and `.cta-button.secondary` styles will be applied.
 
 ### User Experience
 
@@ -92,21 +94,22 @@ No new CSS required - existing `.hero-links` and related styles will be applied.
 
 **In Hero.tsx:**
 
-Add a new link element within the existing contact links container:
+Add a new button element within the existing `hero-cta-buttons` div:
 
 ```tsx
 <a
   href="/Shivaan-Satish-CV.pdf"
   download="Shivaan-Satish-CV.pdf"
+  className="cta-button secondary"
   aria-label="Download CV as PDF"
-  className="[existing-link-classes]"
 >
-  <DownloadIcon />
   Download CV
 </a>
 ```
 
-Position after LinkedIn link in the same container.
+Position after the "View LinkedIn" button in the `hero-cta-buttons` container.
+
+Optional enhancement: Add a small download SVG icon (14x14px) before the text, styled similarly to the location icon.
 
 ## Testing Plan
 
