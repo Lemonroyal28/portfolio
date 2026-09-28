@@ -11,7 +11,7 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
-    date: 'Jan 2026 — Present',
+    date: 'Jan 2026 — Aug 2026',
     role: 'Junior Full Stack Engineer',
     company: 'CUMLAUDE.AI',
     companyUrl: 'https://cumlaude.ai',

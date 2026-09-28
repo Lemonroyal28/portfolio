@@ -11,7 +11,6 @@ export default function ExperienceSection() {
             <TimelineEntry
               key={index}
               date={exp.date}
-              isNow={index === 0}
               role={exp.role}
               company={exp.company}
               companyUrl={exp.companyUrl}
